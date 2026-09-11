@@ -78,6 +78,8 @@ img {
 }
 
 /* Media Queries */
+/* width: calc((100% / 2) - (1rem / 2))*/
+/* width: calc((100% / [number of images]) - ([spaces/gutters between] / [number of images])) */
 
 @media screen and (min-width: 640px) {
     h1{
