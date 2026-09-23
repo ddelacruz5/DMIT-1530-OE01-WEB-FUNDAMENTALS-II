@@ -5,3 +5,96 @@
     --border: #e2e8f0;
     --background: #f5f5f5;
 }
+
+body {
+    background-color: var(--background);
+    color: var(--body);
+    font-family: "Open Sans", sans-serif;
+}
+
+/* Utility Classes */
+
+.inner-container {
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 1rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+
+/* Typography */
+
+h1, h2 {
+    color: var(--headings);
+    font-size: 2.125rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+p{
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--accent);
+}
+
+/* Layout */
+
+header .flex-container {
+    align-items: center;
+    flex-flow: row nowrap;
+}
+
+/* The first value controls growing. Item can grow to fill available left over space. The value of 1 means it will take an equal share of the empty space.
+compared with other items set to 1.
+
+The second value controls shrinking. If the container is too small, this item will shrink to avoid overflowing.
+8.5x faster than an item that is set to 1.
+
+The final value represents "flex-basis" which means that before any growing or shrinking happens
+the item is only using 15% of its parent container.*/
+.img-container {
+    flex: 1 8.5 15%;
+}
+
+h1 {
+    flex: 7 1 70%;
+}
+
+section, aside {
+    background-color: (white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 1rem;
+}
+
+@media (min-width: 640px) {
+    .flex-container {
+        flex-flow: row nowrap;
+    }
+    .img-container {
+        flex: 1 9 10%;
+    }
+    h1 {
+        flex: 8 1 80%;
+        font-size: 3rem;
+    }
+    section {
+        flex: 3 1 75%;
+        /* Don't forget about our order property */
+        order: 1;
+    }
+    aside {
+        flex: 1 1 15%;
+    }
+}
