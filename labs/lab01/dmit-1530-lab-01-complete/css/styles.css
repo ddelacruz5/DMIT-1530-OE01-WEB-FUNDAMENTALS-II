@@ -1,0 +1,127 @@
+:root {
+
+    --brass: #ecb731;
+    --light-grey: #f5f5f5;
+    --text: #182222;
+}
+
+body {
+    background-color: white;
+    color: var(--text);
+    font-family: 'Noto Sans', sans-serif;
+    min-width: 360px;
+}
+
+
+
+h1, h2, h3 {    
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-size: calc((40 / 16) * 1rem);
+    border-bottom: 3px solid var(--brass);
+    margin-bottom: 1rem;
+}
+h2 {
+    font-size: calc((30 / 16) * 1rem);    
+    line-height: 1.25;
+    margin: 1rem 0;
+}
+/* extra */
+h2:has(+div.flex) {
+    margin-top: 0;
+}
+/* end extra */
+
+h3 {
+    font-size: calc((24 / 16) * 1rem);    
+    line-height: 1.25;
+    margin-bottom: 1rem;
+}
+p {
+    margin-bottom: 1rem;
+}
+header .container img {
+    max-width: 450px;
+}
+header img {
+    width: 100%;
+}
+
+.container {
+    margin: auto;
+    max-width: 1024px;
+}
+
+.container:not(.container.flex) {
+    padding: 3rem 1rem;
+}
+
+.flex {
+    display: flex;
+    /* extra to have different row and column gaps */
+    gap: 2rem 1rem;
+    flex-wrap: wrap;
+}
+
+.flex section {
+    width: calc((100% - 1rem)/2);
+}
+
+
+
+/*
+If want to challenge your students have the one section be 3 across
+
+.flex.more section {
+    max-width: calc((100% - 2rem)/3);
+} 
+*/
+
+.bkg {
+    background-color: var(--light-grey);
+}
+.bar {    
+    padding: 1rem;
+    font-size: calc(20 / 16 * 1rem);
+    /* line-height: 2; */
+    margin-bottom: 1rem;
+}
+.bar p {
+    margin-bottom: 0;
+}
+.bar img {
+    width: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+footer {
+    background-color: var(--text);
+    color: var(--light-grey);
+    text-align: center;
+}
+
+footer p b {
+    font-size: calc(20 / 16 * 1rem);
+}
+footer a {
+    color: var(--brass);
+}
+
+
+section a {
+    background-color: var(--brass);
+    border-radius: 4px;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    margin-top: .5rem;
+    padding: .5rem 1rem;
+    text-decoration: none;
+}
+section a:hover, section a:active {
+    background-color: var(--text);
+    color:#fff;
+
+}
