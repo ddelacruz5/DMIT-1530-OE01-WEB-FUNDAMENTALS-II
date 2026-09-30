@@ -1,0 +1,171 @@
+/* 
+
+COLOUR PALETTE
+
+    brass: #ecb731;
+    light: #f5f5f5;
+    dark: #182222;
+
+*/
+
+:root {
+    --brass: #ecb731;
+    --light: #f5f5f5;
+    --dark: #182222;
+    --green: #1b4332;
+    /* guessing and adding a green colour*/
+}
+
+/* Universal Styles */
+
+body {
+    color: #182222;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.2;
+    font-size: 100%;
+}
+
+.container {
+    /* what goes here? */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+a {
+    color: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-size: calc((40 / 16) * 1rem);
+    border-bottom: 3px solid var(--brass);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: calc((30 / 16) * 1rem);
+    line-height: 1.25;
+    margin: 1rem 0;
+}
+
+h3 {
+    font-size: calc((24 / 16) * 1rem);
+    line-height: 1.25;
+    margin: 1rem 0;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* mostly from lab 1 */
+
+
+
+/* header */
+header img {
+    max-width: 240px;
+}
+
+
+/* main */
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.green-bkg {
+    background-color: var(--green);
+    color: var(--light);
+}
+
+.green-bkg .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.green-bkg .container img {
+    max-width: 60px;
+}
+
+.green-bkg .container div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.green-bkg a {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--light);
+    color: var(--dark);
+    text-decoration: none;
+}
+
+/* footer */
+footer {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+
+/* media query 1 */
+@media (min-width: 640px) {
+    .flex {
+        flex-flow: row wrap;
+    }
+
+    .align-center {
+        flex-flow: column nowrap;
+    }
+
+    .flex section {
+        width: calc(50% - 1rem);
+    }
+
+    .align-center div,
+    .align-center section {
+        width: 100%
+    }
+}
+
+/* media query 2 */
+@media (min-width: 1024px) {
+    .flex section {
+        width: calc((100% /3) - (4rem / 3));
+    }
+
+    .align-center {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .align-center div,
+    .align-center section {
+        width: auto;
+        max-width: 48%;
+    }
+
+    .green-bkg .container div {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .green-bkg a {
+        flex: 1;
+    }
+}
