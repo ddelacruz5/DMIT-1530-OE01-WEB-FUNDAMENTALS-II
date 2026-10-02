@@ -1,0 +1,498 @@
+/* Custom Properties */
+:root {
+    /* Colours */
+    --navy: #1b2c51;
+    --blue: #0463fa;
+    --light-blue: #eff5ff;
+    --white: #ffffff;
+    --border: 1px solid #edecf1;
+
+    /* Type scale (1.2 ratio) */
+    --xs: 1.2rem;
+    --sm: 1.44rem;
+    --md: 1.728rem;
+    --lg: 2.074rem;
+    --xl: 2.488rem;
+    --xxl: 2.986rem;
+}
+
+/* Mobile/Base */
+body {
+    color: var(--navy);
+    font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: var(--xl);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: var(--md);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: var(--xs);
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+ul {
+    padding-left: 0;
+}
+
+svg {
+    flex-shrink: 0;
+}
+
+/* Reusable Classes */
+.inner-container {
+    padding: 2rem 1rem;
+}
+
+.img-container img {
+    width: 100%;
+}
+
+.logo {
+    align-items: center;
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    font-size: var(--lg);
+    font-weight: 700;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.button {
+    background-color: var(--blue);
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Two-part sections: stacked on mobile */
+.hero,
+.trust .inner-container,
+.choose,
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Card groups: one column on mobile */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+article {
+    background-color: var(--light-blue);
+    color: var(--navy);
+}
+
+/* Header */
+.site-header {
+    border: var(--border);
+}
+
+.site-header .inner-container {
+    padding: 1rem;
+}
+
+.site-header ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.site-header li {
+    padding: 0.25rem 0;
+    text-align: center;
+    width: 50%;
+}
+
+/* Home Page */
+
+/* Hero */
+.hero-text {
+    text-align: center;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* p:first-of-type finds the number
+   p:last-of-type finds the label */
+
+.stats p:first-of-type {
+    font-family: "Roboto", sans-serif;
+    font-size: var(--md);
+    font-weight: 700;
+}
+
+.stats p:last-of-type {
+    font-size: 0.875rem;
+}
+
+/* Why You Should Trust Us */
+.trust {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.trust .button {
+    background-color: var(--white);
+    color: var(--blue);
+}
+
+/* Shared by Trust (Home) and Get To Know Us (About) */
+.trust-text p,
+.intro-text p {
+    margin-bottom: 1rem;
+}
+
+.trust-text ul,
+.intro-text ul {
+    margin-bottom: 1.5rem;
+}
+
+.trust-text li,
+.intro-text li {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Why Choose Us */
+.choose ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.choose li {
+    align-items: center;
+    display: flex;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+    width: calc((100% / 2) - (1rem / 2));
+}
+
+.choose strong {
+    display: block;
+}
+
+/* Centred section headings */
+.doctors h2,
+.services h2,
+.offer h2 {
+    text-align: center;
+}
+
+/* Our Experienced Doctors */
+.doctors {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.doctors article img {
+    width: 100%;
+}
+
+.doctors h3 {
+    padding: 1rem 1rem 0 1rem;
+}
+
+.doctors article p {
+    font-size: 0.875rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+/* "View All" links */
+.doctors a,
+.services a {
+    display: block;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+/* Health Care Services + What we Offer cards */
+.services article,
+.offer article {
+    padding: 1.5rem;
+}
+
+.services h3,
+.offer h3 {
+    margin-bottom: 1rem;
+}
+
+/* About Page */
+
+/* Get To Know Us */
+.intro h1 {
+    text-align: center;
+}
+
+/* What we Offer */
+.offer-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Gallery */
+.gallery {
+    padding: 0 1rem;
+}
+
+.gallery img {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--navy);
+    color: var(--white);
+    text-align: center;
+}
+
+.site-footer h2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.footer-contact p {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links li {
+    padding: 0.25rem 0;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+    /* Type scale steps up */
+    h2 {
+        font-size: var(--lg);
+    }
+
+    /* Header: logo left, nav right */
+    .site-header .inner-container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .site-header nav {
+        width: 50%;
+    }
+
+    .site-header ul {
+        margin-top: 0;
+    }
+
+    /* Two-part sections go side by side */
+    .hero,
+    .trust .inner-container,
+    .choose {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .hero .img-container,
+    .trust .img-container,
+    .choose .img-container {
+        flex: 1 1 45%;
+    }
+
+    .hero-text,
+    .trust-text,
+    .choose-text {
+        flex: 1 1 55%;
+    }
+
+    /* Shrink (flex: x x shrink) is waht is making room so that it fits even though
+    45% + 55% = 100% */
+
+    /* Hero */
+    .hero-text {
+        text-align: left;
+    }
+
+    .stats {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Cards: rows that wrap */
+    .cards {
+        flex-flow: row wrap;
+    }
+
+    .doctors article,
+    .offer article {
+        width: calc((100% / 2) - (1rem / 2));
+    }
+
+    .services article {
+        width: calc((100% / 3) - (2rem / 3));
+    }
+
+    /* Gallery: 2 x 2 */
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .gallery img {
+        margin-bottom: unset;
+        width: calc((100% / 2) - (1rem / 2));
+    }
+
+    /* Footer: logo on top, Address left, Quick Links right */
+    .site-footer .inner-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .site-footer .logo {
+        width: 100%;
+    }
+
+    .footer-contact {
+        text-align: left;
+    }
+
+    .footer-contact p {
+        justify-content: unset;
+    }
+    /* mobile made the address in the center, "unset" puts
+    it back to defaul, where is start (left). */
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    /* Maximum-width centred layout */
+    .inner-container {
+        margin: auto;
+        max-width: 80rem;
+    }
+
+    /* Header: nav in one row, Contact first */
+    .site-header nav,
+    .site-header li {
+        width: unset;
+    }
+
+    .site-header ul {
+        gap: 2rem;
+    }
+
+    .site-header li:nth-child(3) {
+        order: -1;
+    }
+
+    /* Hero: text left, image right */
+    .hero h1 {
+        font-size: var(--xxl);
+    }
+
+    .hero .img-container {
+        order: 1;
+    }
+
+    .stats {
+        gap: 2rem;
+        justify-content: unset;
+    }
+
+    .stats div {
+        border-left: 1px solid var(--navy);
+        padding-left: 0.5rem;
+    }
+
+    /* Doctors: 4 columns */
+    .doctors article {
+        width: calc((100% / 4) - (3rem / 4));
+    }
+
+    /* About - Get To Know Us: side by side */
+    .intro {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .intro .img-container {
+        flex: 1 1 45%;
+    }
+
+    .intro-text {
+        flex: 1 1 55%;
+    }
+
+    .intro h1 {
+        text-align: left;
+    }
+
+    /* About - What we Offer: 2 paragraph columns, 3 card columns */
+    .offer-text {
+        flex-direction: row;
+    }
+
+    .offer-text p {
+        flex: 1 1 50%;
+    }
+
+    .offer article {
+        width: calc((100% / 3) - (2rem / 3));
+    }
+
+    /* About - Gallery: 4 across, edge to edge */
+    .gallery {
+        padding: 0 0 2rem 0;
+    }
+
+    .gallery img {
+        width: calc((100% / 4) - (3rem / 4));
+    }
+
+    /* Footer: logo left, Quick Links right-aligned */
+    .site-footer .logo {
+        justify-content: unset;
+    }
+
+    .footer-links {
+        text-align: right;
+    }
+}
