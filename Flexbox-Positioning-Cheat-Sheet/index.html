@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox &amp; Positioning Cheat Sheet</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>Flexbox &amp; Positioning Cheat Sheet</h1>
+        <p>Simple examples showing common Flexbox layouts, responsive changes, and CSS positioning.</p>
+    </header>
+
+    <main>
+
+        <!-- ==================================================
+             EXAMPLE 1: SIX FLEX ITEMS
+             ================================================== -->
+        <section>
+            <h2>1. Six Responsive Flex Items</h2>
+
+            <div class="six-item-layout">
+                <div class="flex-item item-1">flex-item-1</div>
+                <div class="flex-item item-2">flex-item-2</div>
+                <div class="flex-item item-3">flex-item-3</div>
+                <div class="flex-item item-4">flex-item-4</div>
+                <div class="flex-item item-5">flex-item-5</div>
+                <div class="flex-item item-6">flex-item-6</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 2: FLEX CARDS
+             ================================================== -->
+        <section>
+            <h2>2. Nested Flex Cards</h2>
+
+            <div class="card-layout">
+
+                <article class="card item-1">
+                    <div class="card-header">card-header-1</div>
+                    <div class="card-body">card-body-1</div>
+                    <div class="card-footer">card-footer-1</div>
+                </article>
+
+                <article class="card item-2">
+                    <div class="card-header">card-header-2</div>
+                    <div class="card-body">card-body-2</div>
+                    <div class="card-footer">card-footer-2</div>
+                </article>
+
+                <article class="card item-3">
+                    <div class="card-header">card-header-3</div>
+                    <div class="card-body">card-body-3</div>
+                    <div class="card-footer">card-footer-3</div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 3: PICTURE-CARD STYLE COMPONENT
+             ==================================================
+
+             This example is based on the same Flexbox ideas used
+             in the Picture Card Component exercise.
+
+             There are no real images here. The coloured
+             .picture-card-media blocks stand in for <picture>
+             elements so students can focus on the layout.
+             ================================================== -->
+        <section>
+            <h2>3. Responsive Picture-Card Style Component</h2>
+
+            <div class="picture-card-layout">
+
+                <div class="picture-card">
+                    <div class="picture-card-media item-1">
+                        card-media-1
+                    </div>
+
+                    <div class="picture-card-content item-2">
+                        <h3>card-content-1</h3>
+                        <p>Content area for the first card.</p>
+                        <a href="#" class="card-button">button-1</a>
+                    </div>
+                </div>
+
+                <div class="picture-card">
+                    <div class="picture-card-media item-3">
+                        card-media-2
+                    </div>
+
+                    <div class="picture-card-content item-4">
+                        <h3>card-content-2</h3>
+                        <p>Content area for the second card.</p>
+                        <a href="#" class="card-button">button-2</a>
+                    </div>
+                </div>
+
+                <div class="picture-card">
+                    <div class="picture-card-media item-5">
+                        card-media-3
+                    </div>
+
+                    <div class="picture-card-content item-6">
+                        <h3>card-content-3</h3>
+                        <p>Content area for the third card.</p>
+                        <a href="#" class="card-button">button-3</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 4: ROW
+             ================================================== -->
+        <section>
+            <h2>4. Flex Direction: Row</h2>
+
+            <div class="direction-row">
+                <div class="flex-item item-1">flex-item-1</div>
+                <div class="flex-item item-2">flex-item-2</div>
+                <div class="flex-item item-3">flex-item-3</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 5: ROW REVERSE
+             ================================================== -->
+        <section>
+            <h2>5. Flex Direction: Row Reverse</h2>
+
+            <div class="direction-row-reverse">
+                <div class="flex-item item-1">flex-item-1</div>
+                <div class="flex-item item-2">flex-item-2</div>
+                <div class="flex-item item-3">flex-item-3</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 6: JUSTIFY CONTENT
+             ================================================== -->
+        <section>
+            <h2>6. Justify Content</h2>
+
+            <h3>flex-start</h3>
+            <div class="justify-start demo-box">
+                <div class="small-item item-1">1</div>
+                <div class="small-item item-2">2</div>
+                <div class="small-item item-3">3</div>
+            </div>
+
+            <h3>center</h3>
+            <div class="justify-center demo-box">
+                <div class="small-item item-1">1</div>
+                <div class="small-item item-2">2</div>
+                <div class="small-item item-3">3</div>
+            </div>
+
+            <h3>space-between</h3>
+            <div class="justify-between demo-box">
+                <div class="small-item item-1">1</div>
+                <div class="small-item item-2">2</div>
+                <div class="small-item item-3">3</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 7: ALIGN ITEMS
+             ================================================== -->
+        <section>
+            <h2>7. Align Items</h2>
+
+            <div class="align-items-demo">
+                <div class="align-item short item-1">short</div>
+                <div class="align-item tall item-2">tall</div>
+                <div class="align-item medium item-3">medium</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 8: ORDER
+             ================================================== -->
+        <section>
+            <h2>8. Order Property</h2>
+
+            <div class="order-demo">
+                <div class="flex-item order-item-1 item-1">flex-item-1</div>
+                <div class="flex-item order-item-2 item-2">flex-item-2</div>
+                <div class="flex-item order-item-3 item-3">flex-item-3</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 9: SIMPLE WEBSITE LAYOUT
+             ================================================== -->
+        <section>
+            <h2>9. Simple Website Layout</h2>
+
+            <div class="website-layout">
+
+                <header class="site-header item-1">
+                    site-header
+                </header>
+
+                <nav class="site-nav item-2">
+                    <div>nav-item-1</div>
+                    <div>nav-item-2</div>
+                    <div>nav-item-3</div>
+                </nav>
+
+                <div class="content-layout">
+                    <div class="main-content item-3">
+                        main-content
+                    </div>
+
+                    <aside class="sidebar item-4">
+                        sidebar
+                    </aside>
+                </div>
+
+                <footer class="site-footer item-5">
+                    site-footer
+                </footer>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 10: STATIC POSITIONING
+             ==================================================
+
+             Static is the default position value for HTML
+             elements. Static elements remain in the normal
+             document flow.
+
+             Offset properties such as top, right, bottom,
+             and left DO NOT move static elements.
+             ================================================== -->
+        <section>
+            <h2>10. Static Positioning</h2>
+
+            <p class="example-note">
+                Static elements stay in the normal document flow. The middle
+                item below has <code>top</code> and <code>left</code> values,
+                but they do nothing while the item remains <code>position: static</code>.
+            </p>
+
+            <div class="static-demo">
+                <div class="position-item item-1">static-item-1</div>
+                <div class="position-item static-offset item-2">static-item-2</div>
+                <div class="position-item item-3">static-item-3</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 11: RELATIVE POSITIONING
+             ==================================================
+
+             Relative positioning keeps the element in the
+             normal document flow, but allows offset properties
+             to visually move it from its original position.
+             ================================================== -->
+        <section>
+            <h2>11. Relative Positioning</h2>
+
+            <p class="example-note">
+                The middle item is moved using <code>top</code> and
+                <code>left</code>. Notice that its original space is still
+                reserved in the layout.
+            </p>
+
+            <div class="relative-demo">
+                <div class="position-item item-1">relative-item-1</div>
+                <div class="position-item relative-offset item-2">relative-item-2</div>
+                <div class="position-item item-3">relative-item-3</div>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 12: ABSOLUTE POSITIONING + OFFSETS
+             ==================================================
+
+             This follows the same pattern used in the
+             Static, Relative, and Absolute Positioning exercise:
+
+             1. The outer container is position: relative.
+             2. The inner items are position: absolute.
+             3. top / right / bottom / left place the items
+                inside that relative container.
+             4. z-index controls which overlapping item appears
+                in front.
+             ================================================== -->
+        <section>
+            <h2>12. Absolute Positioning, Offsets &amp; Z-Index</h2>
+
+            <p class="example-note">
+                The dashed box is the relatively positioned container.
+                The coloured items are removed from normal document flow
+                and positioned inside it with offset properties.
+            </p>
+
+            <div class="absolute-demo">
+                <div class="absolute-item absolute-top-left item-1">
+                    top: 1rem;<br>
+                    left: 1rem;
+                </div>
+
+                <div class="absolute-item absolute-middle item-2">
+                    centered<br>
+                    z-index: 2;
+                </div>
+
+                <div class="absolute-item absolute-bottom-right item-3">
+                    bottom: 1rem;<br>
+                    right: 1rem;
+                </div>
+            </div>
+
+            <h3>Offset Property Practice</h3>
+
+            <div class="offset-box-demo">
+                <span class="offset-top">top</span>
+                <span class="offset-right">right</span>
+                <span class="offset-bottom">bottom</span>
+                <span class="offset-left">left</span>
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 13: STICKY POSITIONING
+             ==================================================
+
+             This follows the Sticky & Fixed Positioning exercise.
+
+             A sticky element behaves normally until the scroll
+             reaches its offset value. It then "sticks" in place
+             until its containing area has been passed.
+             ================================================== -->
+        <section>
+            <h2>13. Sticky Positioning</h2>
+
+            <p class="example-note">
+                Scroll inside the box below. The sticky header follows the
+                normal flow until it reaches <code>top: 0</code>, then stays
+                at the top of this scrolling container.
+            </p>
+
+            <div class="sticky-demo">
+
+                <div class="sticky-demo-header">
+                    sticky-item — position: sticky; top: 0;
+                </div>
+
+                <div class="sticky-demo-content">
+                    <div class="position-item item-1">content-item-1</div>
+                    <div class="position-item item-2">content-item-2</div>
+                    <div class="position-item item-3">content-item-3</div>
+                    <div class="position-item item-4">content-item-4</div>
+                    <div class="position-item item-5">content-item-5</div>
+                    <div class="position-item item-6">content-item-6</div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================
+             EXAMPLE 14: FIXED POSITIONING
+             ==================================================
+
+             This mirrors the "live chat" pattern in the
+             Sticky & Fixed Positioning exercise.
+
+             A fixed element is positioned relative to the
+             browser viewport and does not move when the page
+             scrolls.
+             ================================================== -->
+        <section>
+            <h2>14. Fixed Positioning</h2>
+
+            <p class="example-note">
+                The circular <strong>fixed-item</strong> in the lower-right
+                corner of the browser stays there as the page scrolls.
+                This is the same idea commonly used for live-chat buttons,
+                back-to-top controls, or floating action buttons.
+            </p>
+
+            <div class="fixed-demo-placeholder">
+                The fixed item is attached to the viewport, not this box.
+            </div>
+        </section>
+
+    </main>
+
+    <!--
+        This element sits outside the main content because it is fixed
+        to the viewport rather than positioned as part of a section.
+    -->
+    <div class="fixed-item">
+        fixed-item
+    </div>
+
+
+</body>
+</html>

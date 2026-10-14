@@ -1,0 +1,1863 @@
+/* ==========================================================
+   FLEXBOX CHEAT SHEET
+   ==========================================================
+
+   FLEXBOX BIG IDEA:
+
+   Flexbox works through a PARENT -> CHILD relationship.
+
+   1. Turn a PARENT element into a flex container:
+
+        display: flex;
+
+   2. The DIRECT CHILDREN of that parent become flex items.
+
+   Example:
+
+        <div class="container">
+            <div>Item 1</div>
+            <div>Item 2</div>
+            <div>Item 3</div>
+        </div>
+
+        .container {
+            display: flex;
+        }
+
+   .container is the FLEX CONTAINER.
+   Its three direct children are the FLEX ITEMS.
+
+   An element can also be BOTH:
+   - a flex item inside its parent
+   - a flex container for its own children
+
+   This is called NESTED FLEXBOX.
+   ========================================================== */
+
+
+/* ==========================================================
+   BASIC PAGE STYLES
+   ==========================================================
+
+   These rules make the examples easy to see.
+   They are not all Flexbox rules.
+   ========================================================== */
+
+
+/*
+   The * selector targets EVERY element.
+
+   box-sizing: border-box makes width calculations easier
+   because padding and borders are included inside the
+   declared width instead of being added outside it.
+*/
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    /* Remove the browser's default outside spacing. */
+    margin: 0;
+
+    /* Use common system-safe fonts. */
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Light background helps the white sections stand out. */
+    background-color: #f4f4f4;
+
+    /* Default text colour. */
+    color: #222;
+}
+
+
+.page-header {
+    /* Space INSIDE the header. */
+    padding: 2rem;
+
+    /* Centers inline content such as text. */
+    text-align: center;
+
+    background-color: #222;
+    color: white;
+}
+
+
+main {
+    /*
+       min() tells the browser to use the SMALLER value.
+
+       On a large screen:
+       maximum useful width = 1200px
+
+       On a smaller screen:
+       width = 90% of the available space
+    */
+    width: min(1200px, 90%);
+
+    /*
+       auto left/right margins divide the unused space evenly,
+       centering the main container.
+    */
+    margin: 0 auto;
+}
+
+
+section {
+    /* Space OUTSIDE each example. */
+    margin: 3rem 0;
+
+    /* Space INSIDE each example. */
+    padding: 2rem;
+
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+
+h2 {
+    /* Removes the browser's default top spacing. */
+    margin-top: 0;
+}
+
+
+/*
+   These classes share the same basic visual styling.
+
+   Grouping selectors with commas prevents us from repeating
+   identical declarations over and over.
+*/
+.flex-item,
+.small-item,
+.align-item,
+.card,
+.picture-card-media,
+.picture-card-content,
+.site-header,
+.site-nav,
+.main-content,
+.sidebar,
+.site-footer {
+    padding: 1.5rem;
+    border: 2px solid #222;
+    text-align: center;
+}
+
+
+/* ==========================================================
+   ITEM COLOURS
+   ==========================================================
+
+   The colours are intentionally different so students can
+   track an item between the HTML and CSS.
+
+   Example:
+
+       <div class="flex-item item-1">
+
+   receives its colour from:
+
+       .item-1
+   ========================================================== */
+
+.item-1 {
+    background-color: lightcoral;
+}
+
+.item-2 {
+    background-color: lightskyblue;
+}
+
+.item-3 {
+    background-color: lightgreen;
+}
+
+.item-4 {
+    background-color: khaki;
+}
+
+.item-5 {
+    background-color: plum;
+}
+
+.item-6 {
+    background-color: lightsalmon;
+}
+
+
+/* ==========================================================
+   1. SIX RESPONSIVE FLEX ITEMS
+   ==========================================================
+
+   GOAL:
+
+   Small screen:
+       1 item per row
+
+   Medium screen:
+       2 items per row
+
+   Large screen:
+       6 items per row
+   ========================================================== */
+
+.six-item-layout {
+
+    /*
+       The parent becomes a FLEX CONTAINER.
+
+       Its direct children:
+       .flex-item
+
+       become FLEX ITEMS.
+    */
+    display: flex;
+
+
+    /*
+       flex-wrap allows items to move onto another line.
+
+       nowrap = force everything onto one line
+       wrap   = allow additional rows
+
+       Wrapping is important for responsive layouts.
+    */
+    flex-wrap: wrap;
+
+
+    /*
+       gap creates space BETWEEN flex items.
+
+       It is usually cleaner than putting margins on every item.
+    */
+    gap: 1rem;
+}
+
+
+.six-item-layout .flex-item {
+
+    /*
+       flex is shorthand for:
+
+       flex-grow
+       flex-shrink
+       flex-basis
+
+       flex: 1 1 100%;
+
+       means:
+
+       flex-grow:   1;
+       flex-shrink: 1;
+       flex-basis:  100%;
+
+       The 100% basis makes each item start at the full
+       container width, so each item begins on its own row.
+    */
+    flex: 1 1 100%;
+}
+
+
+/* ==========================================================
+   2. NESTED FLEX CARDS
+   ==========================================================
+
+   There are TWO levels of Flexbox here.
+
+   LEVEL 1:
+   .card-layout controls the position of the cards.
+
+   LEVEL 2:
+   Each .card controls the header, body, and footer
+   inside itself.
+
+   This is called NESTED FLEXBOX.
+   ========================================================== */
+
+.card-layout {
+
+    /* The wrapper becomes a flex container. */
+    display: flex;
+
+
+    /*
+       flex-flow is shorthand for:
+
+       flex-direction
+       flex-wrap
+
+       column = stack the cards vertically
+       wrap   = allow wrapping if needed
+
+       This is the small-screen/mobile layout.
+    */
+    flex-flow: column wrap;
+
+
+    gap: 1rem;
+}
+
+
+.card {
+
+    /*
+       Remove the shared padding because the header, body,
+       and footer have their own spacing.
+    */
+    padding: 0;
+
+
+    /*
+       The card is a FLEX ITEM inside .card-layout...
+
+       ...but it ALSO becomes a FLEX CONTAINER for:
+       .card-header
+       .card-body
+       .card-footer
+    */
+    display: flex;
+
+
+    /*
+       Stack the parts of the card vertically:
+
+       header
+       body
+       footer
+    */
+    flex-direction: column;
+
+
+    /* Gives us enough height to clearly see flex-grow. */
+    min-height: 300px;
+}
+
+
+.card-header,
+.card-footer {
+    padding: 1rem;
+}
+
+
+.card-body {
+    padding: 2rem 1rem;
+
+
+    /*
+       flex-grow: 1 tells the body:
+
+       "Take the unused space inside this card."
+
+       Because the card uses flex-direction: column,
+       the body grows vertically.
+
+       This pushes the footer toward the bottom and helps
+       multiple cards keep their footers aligned.
+    */
+    flex-grow: 1;
+}
+
+
+/* ==========================================================
+   3. RESPONSIVE PICTURE-CARD STYLE COMPONENT
+   ==========================================================
+
+   This pattern comes from the Picture Card Component.
+
+   We are NOT using real images here.
+
+   .picture-card-media represents the area where a <picture>
+   or <img> would normally appear.
+
+   SMALL SCREEN:
+   Each card is horizontal:
+
+       | MEDIA 40% | CONTENT 60% |
+
+   LARGE SCREEN:
+   The THREE cards sit beside one another, and each card
+   changes internally to a vertical layout:
+
+       | CARD 1 | CARD 2 | CARD 3 |
+
+   Inside each card:
+
+       MEDIA
+       CONTENT
+
+   This demonstrates that Flexbox direction can change at
+   different levels of a layout.
+   ========================================================== */
+
+
+/*
+   OUTER FLEX CONTAINER
+
+   This controls how the THREE cards are arranged relative
+   to one another.
+*/
+.picture-card-layout {
+
+    display: flex;
+
+
+    /*
+       column = cards stack vertically on smaller screens
+       wrap   = cards may wrap if necessary
+
+       Equivalent to:
+
+       flex-direction: column;
+       flex-wrap: wrap;
+    */
+    flex-flow: column wrap;
+
+
+    gap: 1.5rem;
+}
+
+
+/*
+   EACH INDIVIDUAL CARD
+
+   The card is a FLEX ITEM inside .picture-card-layout.
+
+   It also becomes a FLEX CONTAINER for:
+   - .picture-card-media
+   - .picture-card-content
+*/
+.picture-card {
+
+    display: flex;
+
+
+    /*
+       row is the default flex-direction, but writing it here
+       makes the teaching example clearer.
+
+       Small-screen layout:
+
+       MEDIA | CONTENT
+    */
+    flex-direction: row;
+
+
+    /*
+       Vertically aligns the two parts of the card
+       along the CROSS AXIS.
+    */
+    align-items: stretch;
+
+
+    border: 2px solid #222;
+    border-radius: 8px;
+
+    /*
+       overflow: hidden clips the coloured children to the
+       rounded corners of the card.
+
+       In a real picture card this is often useful so an image
+       does not stick outside a rounded border.
+    */
+    overflow: hidden;
+}
+
+
+/*
+   MEDIA AREA
+
+   In the real Picture Card Component this role is performed
+   by a <picture> element containing responsive images.
+
+   Here we use a coloured DIV to make the layout easier to see.
+*/
+.picture-card-media {
+
+    /*
+       flex-basis: 40% gives the media area approximately
+       40% of the card's width.
+
+       0 0 40% means:
+
+       flex-grow:   0  -> do not grow larger automatically
+       flex-shrink: 0  -> do not shrink automatically
+       flex-basis: 40% -> start at 40% width
+    */
+    flex: 0 0 40%;
+
+
+    /*
+       This is only for the demo so the coloured media block
+       remains easy to see.
+    */
+    min-height: 180px;
+
+
+    /*
+       Nested Flexbox again.
+
+       We use Flexbox inside the media block purely to center
+       its label.
+    */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+   CONTENT AREA
+
+   The media uses 40%.
+   The content uses the remaining 60%.
+*/
+.picture-card-content {
+
+    /*
+       A 60% basis creates the second half of the
+       40% / 60% layout.
+
+       grow = 1 allows the content to take leftover room.
+       shrink = 1 allows it to shrink if necessary.
+    */
+    flex: 1 1 60%;
+
+
+    /*
+       The content area is also a flex container.
+
+       This lets us stack:
+       heading
+       paragraph
+       button
+    */
+    display: flex;
+    flex-direction: column;
+
+
+    /*
+       text-align was centered by the shared demo styles.
+       This changes the card's actual content back to the left.
+    */
+    text-align: left;
+}
+
+
+.picture-card-content h3 {
+    margin-top: 0;
+}
+
+
+.picture-card-content p {
+
+    /*
+       Let the paragraph consume unused vertical space.
+
+       This helps keep buttons aligned toward the bottom
+       even when cards contain different amounts of text.
+    */
+    flex-grow: 1;
+}
+
+
+/*
+   Simple reusable button.
+
+   The button is not what creates the card layout,
+   but it shows a common use of Flexbox inside a component.
+*/
+.card-button {
+
+    display: block;
+
+    /*
+       align-self overrides the parent's alignment for THIS
+       single flex item.
+
+       flex-start keeps the button only as wide as it needs
+       to be instead of stretching across the full card.
+    */
+    align-self: flex-start;
+
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+
+    background-color: #222;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+
+/* ==========================================================
+   4. FLEX DIRECTION: ROW
+   ==========================================================
+
+   flex-direction controls the MAIN AXIS.
+
+   row means the main axis moves horizontally:
+
+       item 1 | item 2 | item 3
+
+   row is also the default Flexbox direction.
+   ========================================================== */
+
+.direction-row {
+
+    display: flex;
+
+    /*
+       Items are placed from left to right.
+    */
+    flex-direction: row;
+
+    gap: 1rem;
+}
+
+
+.direction-row .flex-item {
+
+    /*
+       All three items receive the same flex value,
+       so they share the available space evenly.
+    */
+    flex: 1;
+}
+
+
+/* ==========================================================
+   5. FLEX DIRECTION: ROW-REVERSE
+   ==========================================================
+
+   The HTML stays:
+
+       item 1
+       item 2
+       item 3
+
+   But the VISUAL order becomes:
+
+       item 3 | item 2 | item 1
+
+   Flexbox changes the presentation without rewriting the HTML.
+   ========================================================== */
+
+.direction-row-reverse {
+
+    display: flex;
+
+    flex-direction: row-reverse;
+
+    gap: 1rem;
+}
+
+
+.direction-row-reverse .flex-item {
+    flex: 1;
+}
+
+
+/* ==========================================================
+   6. JUSTIFY-CONTENT
+   MAIN AXIS ALIGNMENT
+   ==========================================================
+
+   Flexbox has TWO axes.
+
+   MAIN AXIS:
+   follows flex-direction
+
+   CROSS AXIS:
+   runs perpendicular to the main axis
+
+   With flex-direction: row:
+
+       MAIN AXIS  = horizontal
+       CROSS AXIS = vertical
+
+   justify-content works along the MAIN AXIS.
+   ========================================================== */
+
+.demo-box {
+
+    min-height: 130px;
+    margin-bottom: 2rem;
+    padding: 1rem;
+
+    /*
+       The dashed border makes the size of the
+       FLEX CONTAINER easy to see.
+    */
+    border: 2px dashed #777;
+
+    display: flex;
+    gap: 1rem;
+}
+
+
+/*
+   Fixed widths make the unused space visible,
+   which makes justify-content easier to understand.
+*/
+.small-item {
+    width: 90px;
+}
+
+
+/*
+   Put all items at the START of the main axis.
+
+   [1][2][3]-------------------
+*/
+.justify-start {
+    justify-content: flex-start;
+}
+
+
+/*
+   Group all items in the center.
+
+   --------[1][2][3]--------
+*/
+.justify-center {
+    justify-content: center;
+}
+
+
+/*
+   First item goes to the start.
+   Last item goes to the end.
+   Remaining space is placed BETWEEN the items.
+
+   [1]--------[2]--------[3]
+*/
+.justify-between {
+    justify-content: space-between;
+}
+
+
+/* ==========================================================
+   7. ALIGN-ITEMS
+   CROSS AXIS ALIGNMENT
+   ==========================================================
+
+   With a normal ROW layout:
+
+       justify-content = horizontal positioning
+       align-items     = vertical positioning
+
+   If flex-direction changes, the axes change too.
+   ========================================================== */
+
+.align-items-demo {
+
+    min-height: 300px;
+    padding: 1rem;
+
+    border: 2px dashed #777;
+
+    display: flex;
+
+
+    /*
+       Try changing center to:
+
+       flex-start
+       center
+       flex-end
+       stretch
+
+       Because the items have different heights, the effect
+       is easy to see.
+    */
+    align-items: center;
+
+
+    gap: 1rem;
+}
+
+
+/* Equal horizontal shares. */
+.align-item {
+    flex: 1;
+}
+
+
+/*
+   Different heights are used only to make the
+   cross-axis alignment obvious.
+*/
+.short {
+    height: 80px;
+}
+
+.medium {
+    height: 140px;
+}
+
+.tall {
+    height: 220px;
+}
+
+
+/* ==========================================================
+   8. ORDER PROPERTY
+   ==========================================================
+
+   Normally flex items display in HTML/source order.
+
+   The order property can change VISUAL order.
+
+   IMPORTANT:
+   Visual order does not necessarily change keyboard or
+   assistive-technology reading order.
+
+   Keep the HTML in a logical order whenever possible.
+   ========================================================== */
+
+.order-demo {
+
+    display: flex;
+    gap: 1rem;
+}
+
+
+.order-demo .flex-item {
+    flex: 1;
+}
+
+
+/*
+   HTML order:
+
+       item 1
+       item 2
+       item 3
+
+   CSS order values:
+
+       item 1 -> 2
+       item 2 -> 3
+       item 3 -> 1
+
+   Visual result:
+
+       item 3 | item 1 | item 2
+
+   Lower order numbers appear first.
+*/
+.order-item-1 {
+    order: 2;
+}
+
+.order-item-2 {
+    order: 3;
+}
+
+.order-item-3 {
+    order: 1;
+}
+
+
+/* ==========================================================
+   9. SIMPLE WEBSITE LAYOUT
+   ==========================================================
+
+   This combines several Flexbox ideas into a basic page.
+
+   MOBILE:
+
+       HEADER
+       NAVIGATION
+       MAIN CONTENT
+       SIDEBAR
+       FOOTER
+
+   DESKTOP:
+
+       HEADER
+       NAVIGATION
+       MAIN CONTENT | SIDEBAR
+       FOOTER
+
+   We build the smaller layout first and modify it later
+   with media queries.
+
+   This is MOBILE-FIRST design.
+   ========================================================== */
+
+.website-layout {
+
+    display: flex;
+
+    /* Stack the major page areas vertically. */
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+.site-nav {
+
+    /*
+       The navigation itself becomes a nested
+       Flexbox container.
+    */
+    display: flex;
+
+
+    /*
+       Small screen:
+       navigation items stack vertically.
+    */
+    flex-direction: column;
+
+
+    gap: 0.5rem;
+}
+
+
+.site-nav div {
+
+    padding: 0.75rem;
+
+    /*
+       rgba() lets us use transparency.
+
+       The final number is the alpha value:
+       0   = transparent
+       1   = opaque
+       0.6 = 60% opacity
+    */
+    background-color: rgba(255, 255, 255, 0.6);
+
+    border: 1px solid #333;
+}
+
+
+/* ---------- MAIN CONTENT + SIDEBAR ---------- */
+
+.content-layout {
+
+    display: flex;
+
+
+    /*
+       Start with the smaller-screen layout.
+
+       main-content
+       sidebar
+    */
+    flex-direction: column;
+
+
+    gap: 1rem;
+}
+
+
+.main-content {
+    min-height: 300px;
+}
+
+
+.sidebar {
+    min-height: 200px;
+}
+
+
+/* ==========================================================
+   TABLET BREAKPOINT
+   ==========================================================
+
+   This media query activates when the viewport is
+   AT LEAST 640px wide.
+
+   Because our base styles are for smaller screens,
+   this is called MOBILE-FIRST CSS.
+
+   Notice that we do NOT rewrite everything.
+
+   We only change the properties that need to behave
+   differently when more space becomes available.
+   ========================================================== */
+
+@media screen and (min-width: 640px) {
+
+
+    /* ---------- SIX FLEX ITEMS ---------- */
+
+    .six-item-layout .flex-item {
+
+        /*
+           Two items per row.
+
+           Each item begins at approximately 50%.
+
+           Why subtract 0.5rem?
+
+           Two 50% items already use 100%.
+
+           We ALSO have a 1rem gap:
+
+           50% + 50% + 1rem = too wide
+
+           Each item gives up half the gap:
+
+           50% - 0.5rem
+        */
+        flex: 0 1 calc(50% - 0.5rem);
+    }
+
+
+    /* ---------- NESTED FLEX CARDS ---------- */
+
+    .card-layout {
+
+        /*
+           Change the OUTER card layout from vertical
+           to horizontal.
+        */
+        flex-direction: row;
+    }
+
+
+    .card {
+
+        /*
+           Each card can now begin around half width.
+
+           The parent is allowed to wrap, so additional cards
+           can move to another line.
+        */
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+
+
+    /* ---------- NAVIGATION ---------- */
+
+    .site-nav {
+
+        /*
+           Change the nav from:
+
+           item
+           item
+           item
+
+           to:
+
+           item | item | item
+        */
+        flex-direction: row;
+    }
+
+
+    .site-nav div {
+
+        /*
+           Equal flex values divide the available width evenly.
+        */
+        flex: 1;
+    }
+}
+
+
+/* ==========================================================
+   PICTURE-CARD BREAKPOINT
+   ==========================================================
+
+   The original Picture Card Component changes at a larger
+   breakpoint, so we demonstrate the same idea here.
+
+   At 890px:
+
+   1. The OUTER layout changes from a column to a row.
+   2. The THREE cards can sit side-by-side.
+   3. Each card's INNER direction changes from row to column.
+   4. The 40% / 60% widths are removed because media and
+      content now stack vertically.
+
+   This is an important Flexbox lesson:
+
+   DIFFERENT FLEX CONTAINERS CAN CHANGE DIRECTION
+   INDEPENDENTLY AT THE SAME BREAKPOINT.
+   ========================================================== */
+
+@media screen and (min-width: 890px) {
+
+
+    .picture-card-layout {
+
+        /*
+           Before 890px:
+
+           Card
+           Card
+           Card
+
+           After 890px:
+
+           Card | Card | Card
+        */
+        flex-flow: row wrap;
+    }
+
+
+    .picture-card {
+
+        /*
+           Before:
+
+           MEDIA | CONTENT
+
+           After:
+
+           MEDIA
+           CONTENT
+
+           We are changing the layout INSIDE each card.
+        */
+        flex-direction: column;
+
+
+        /*
+           We want THREE cards across.
+
+           There are 2 gaps between 3 cards.
+
+           gap = 1.5rem
+
+           total gap space = 3rem
+
+           Remove that space first, then divide what remains
+           across the three cards.
+        */
+        width: calc((100% - 3rem) / 3);
+    }
+
+
+    .picture-card-media,
+    .picture-card-content {
+
+        /*
+           The earlier 40% / 60% split was useful while the
+           two parts were side-by-side.
+
+           Now that they are stacked, each part should use
+           the full width of the card.
+
+           Setting flex-basis to auto removes the fixed
+           percentage basis.
+        */
+        flex-basis: auto;
+
+        width: 100%;
+    }
+
+
+    .picture-card-media {
+
+        /*
+           We no longer want the media block locked at 40%.
+
+           It can now use the card's full width.
+        */
+        min-height: 180px;
+    }
+
+
+    .picture-card-content {
+
+        /*
+           Allow the content portion to grow vertically so
+           cards with different amounts of content can still
+           make good use of their available height.
+        */
+        flex-grow: 1;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP BREAKPOINT
+   ==========================================================
+
+   These rules apply at 960px and wider.
+
+   Remember:
+   media-query rules OVERRIDE only the properties written here.
+
+   Everything else continues using earlier CSS.
+   ========================================================== */
+
+@media screen and (min-width: 960px) {
+
+
+    /* ---------- SIX ITEMS ON ONE ROW ---------- */
+
+    .six-item-layout .flex-item {
+
+        /*
+           Six items create FIVE gaps.
+
+           gap = 1rem
+           total gap space = 5rem
+
+           Remove the gap space and divide what remains
+           among six items:
+
+           (100% - 5rem) / 6
+        */
+        flex: 0 1 calc((100% - 5rem) / 6);
+    }
+
+
+    /* ---------- THREE NESTED CARDS ---------- */
+
+    .card {
+
+        /*
+           All cards receive the same share of the available
+           space, producing three equal columns.
+        */
+        flex: 1;
+    }
+
+
+    /* ---------- MAIN CONTENT + SIDEBAR ---------- */
+
+    .content-layout {
+
+        /*
+           Small screen:
+
+           main-content
+           sidebar
+
+           Large screen:
+
+           main-content | sidebar
+        */
+        flex-direction: row;
+    }
+
+
+    .main-content {
+
+        /*
+           Flex values can behave like ratios.
+
+           main-content = 3 shares
+           sidebar      = 1 share
+
+           Total = 4 shares
+
+           Main content receives roughly 3/4 of the flexible
+           space before considering the gap.
+        */
+        flex: 3;
+    }
+
+
+    .sidebar {
+
+        /* Sidebar receives the remaining 1 share. */
+        flex: 1;
+    }
+}
+
+
+/* ==========================================================
+   CSS POSITIONING
+   ==========================================================
+
+   The position property tells the browser HOW an element
+   should be positioned.
+
+   The five common values are:
+
+       static
+       relative
+       absolute
+       sticky
+       fixed
+
+   These values behave differently in relation to:
+
+   - the NORMAL DOCUMENT FLOW
+   - a CONTAINING / POSITIONED ANCESTOR
+   - the BROWSER VIEWPORT
+
+   OFFSET PROPERTIES:
+
+       top
+       right
+       bottom
+       left
+
+   These properties tell a positioned element how far it
+   should be placed from a particular edge.
+
+   IMPORTANT:
+
+   Offset properties do not move position: static elements.
+   ========================================================== */
+
+
+/*
+   Shared visual styles for the positioning examples.
+*/
+.position-item {
+    border: 2px solid #222;
+    min-height: 90px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+
+.example-note {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+
+.example-note code {
+    background-color: #eee;
+    border-radius: 4px;
+    padding: 0.15rem 0.35rem;
+}
+
+
+/* ==========================================================
+   10. STATIC POSITIONING
+   ==========================================================
+
+   STATIC IS THE DEFAULT.
+
+   Unless another position value is assigned, HTML elements
+   use:
+
+       position: static;
+
+   Static elements:
+
+   - remain in normal document flow
+   - occupy their normal amount of space
+   - appear in normal source order
+   - DO NOT respond to top/right/bottom/left
+
+   This is why static is useful as a "reset" if another
+   position value was applied at a smaller breakpoint.
+   ========================================================== */
+
+.static-demo {
+    border: 2px dashed #777;
+    padding: 1rem;
+}
+
+
+.static-demo .position-item {
+    margin-bottom: 1rem;
+}
+
+
+/*
+   We explicitly write position: static here for teaching.
+
+   It would behave the same without this line because static
+   is already the browser default.
+*/
+.static-offset {
+    position: static;
+
+
+    /*
+       These offsets DO NOTHING while position is static.
+
+       Try changing position: static to position: relative
+       and watch these values suddenly begin working.
+    */
+    left: 2rem;
+    top: 1rem;
+}
+
+
+/* ==========================================================
+   11. RELATIVE POSITIONING
+   ==========================================================
+
+   Relative positioning is very important because it has
+   TWO common jobs:
+
+   JOB 1:
+   Move an element slightly from where it normally appears.
+
+   JOB 2:
+   Create a POSITIONED CONTAINER for absolutely positioned
+   children.
+
+   Unlike absolute positioning, a relatively positioned
+   element REMAINS in normal document flow.
+
+   That means its ORIGINAL SPACE is still reserved even if
+   the element is visually moved.
+   ========================================================== */
+
+.relative-demo {
+    border: 2px dashed #777;
+    padding: 1rem;
+}
+
+
+.relative-demo .position-item {
+    margin-bottom: 1rem;
+}
+
+
+.relative-offset {
+
+    /*
+       The element still occupies its ORIGINAL location
+       in normal document flow.
+    */
+    position: relative;
+
+
+    /*
+       Offset properties move the element relative to
+       where it WOULD HAVE BEEN.
+
+       left: 2rem;
+       moves the element 2rem away from its left edge,
+       visually pushing it to the RIGHT.
+
+       top: 1rem;
+       moves the element 1rem away from its top edge,
+       visually pushing it DOWN.
+    */
+    left: 2rem;
+    top: 1rem;
+
+
+    /*
+       Because the element still "owns" its original space,
+       the item after it does not move up to fill the gap.
+    */
+}
+
+
+/* ==========================================================
+   12. ABSOLUTE POSITIONING
+   ==========================================================
+
+   This follows the same pattern as the positioning exercise.
+
+   STEP 1:
+   Give the CONTAINER:
+
+       position: relative;
+
+   STEP 2:
+   Give the CHILD:
+
+       position: absolute;
+
+   STEP 3:
+   Place that child with:
+
+       top
+       right
+       bottom
+       left
+
+   Why make the parent relative?
+
+   An absolutely positioned element looks for its nearest
+   POSITIONED ANCESTOR.
+
+   A positioned ancestor is an ancestor whose position is
+   something OTHER THAN static.
+
+   If no positioned ancestor exists, the absolute element may
+   position itself relative to the initial containing block /
+   viewport instead.
+   ========================================================== */
+
+.absolute-demo {
+
+    /*
+       The relative container itself does not visibly move.
+
+       Instead, this creates the positioning boundary for the
+       absolutely positioned children inside it.
+    */
+    position: relative;
+
+
+    /*
+       Absolute children are removed from normal document flow.
+
+       Because they no longer create normal layout height,
+       we must deliberately give the demo container a height.
+    */
+    height: 380px;
+
+
+    margin: 2rem auto;
+    max-width: 700px;
+
+    border: 2px dashed #222;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+
+/*
+   Every coloured block inside .absolute-demo is taken OUT
+   of normal document flow.
+
+   They can now overlap one another.
+*/
+.absolute-item {
+    position: absolute;
+
+    width: 45%;
+    min-height: 140px;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+    padding: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/*
+   Place this item 1rem from the TOP and LEFT edges
+   of the nearest positioned ancestor: .absolute-demo.
+*/
+.absolute-top-left {
+    left: 1rem;
+    top: 1rem;
+}
+
+
+/*
+   This item demonstrates a combination of offsets and
+   transform to place something in the center.
+
+   top: 50% and left: 50% place the element's TOP-LEFT CORNER
+   at the center.
+
+   translate(-50%, -50%) then pulls the item back by half of
+   its own width and height so its CENTER sits in the middle.
+*/
+.absolute-middle {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+
+    /*
+       z-index controls stacking order on the z-axis.
+
+       A larger z-index appears in front of a smaller one
+       when positioned elements overlap.
+    */
+    z-index: 2;
+}
+
+
+/*
+   Place this item 1rem from the BOTTOM and RIGHT edges
+   of .absolute-demo.
+*/
+.absolute-bottom-right {
+    bottom: 1rem;
+    right: 1rem;
+}
+
+
+/* ==========================================================
+   OFFSET PROPERTY PRACTICE
+   ==========================================================
+
+   This closely mirrors the offset-practice box from the
+   Static, Relative, and Absolute Positioning exercise.
+
+   The outer box is relative.
+   Each label inside is absolute.
+
+   Students can change the values and immediately see how
+   top/right/bottom/left behave.
+   ========================================================== */
+
+.offset-box-demo {
+    background-color: #fff;
+    border: 2px dotted #222;
+    border-radius: 4px;
+
+    height: 320px;
+    margin: 2rem auto 0 auto;
+    max-width: 640px;
+
+
+    /*
+       Establish the containing block for the absolute
+       <span> elements inside.
+    */
+    position: relative;
+}
+
+
+.offset-box-demo span {
+    background-color: #222;
+    border-radius: 1rem;
+    color: #fff;
+
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    padding: 0.5rem;
+
+    /*
+       Remove each label from normal document flow.
+    */
+    position: absolute;
+
+    text-align: center;
+    width: 5rem;
+}
+
+
+/*
+   Center horizontally, then move down 2rem from the top.
+
+   50% refers to the containing block.
+   Half of the 5rem label width is 2.5rem.
+
+   calc(50% - 2.5rem) therefore centers the label.
+*/
+.offset-top {
+    left: calc(50% - 2.5rem);
+    top: 2rem;
+}
+
+
+/*
+   Move 2rem inward from the right edge.
+*/
+.offset-right {
+    right: 2rem;
+    top: calc(50% - 1rem);
+}
+
+
+/*
+   Move 2rem upward from the bottom edge.
+*/
+.offset-bottom {
+    bottom: 2rem;
+    right: calc(50% - 2.5rem);
+}
+
+
+/*
+   Move 2rem inward from the left edge.
+*/
+.offset-left {
+    bottom: calc(50% - 1rem);
+    left: 2rem;
+}
+
+
+/* ==========================================================
+   13. STICKY POSITIONING
+   ==========================================================
+
+   position: sticky is a MIX of normal flow and positioned
+   behaviour.
+
+   A sticky element:
+
+   1. begins in normal document flow
+   2. scrolls normally at first
+   3. reaches an offset such as top: 0
+   4. then "sticks" there
+   5. remains constrained by its containing area
+
+   IMPORTANT:
+
+   Sticky positioning needs a helper offset such as:
+
+       top: 0;
+
+   Without an offset, there is no point at which the browser
+   knows the element should begin sticking.
+   ========================================================== */
+
+.sticky-demo {
+
+    /*
+       This creates a smaller scrollable area so students can
+       test sticky positioning without scrolling the entire
+       browser window.
+    */
+    height: 360px;
+    overflow-y: auto;
+
+    border: 2px dashed #777;
+    background-color: #fff;
+}
+
+
+.sticky-demo-header {
+    background-color: #222;
+    color: #fff;
+
+    padding: 1rem;
+
+    /*
+       This vendor-prefixed version appears in the original
+       sticky-positioning exercise to support older WebKit
+       implementations.
+    */
+    position: -webkit-sticky;
+
+
+    /*
+       Sticky keeps the element in normal flow until it reaches
+       the offset value below.
+    */
+    position: sticky;
+
+
+    /*
+       REQUIRED HELPER PROPERTY.
+
+       Once the sticky element reaches the top of its scrolling
+       container, keep it 0px from that top edge.
+    */
+    top: 0;
+
+
+    /*
+       Sticky elements may scroll over other content.
+
+       z-index: 1 keeps the sticky header in front of the
+       coloured items as they pass underneath it.
+    */
+    z-index: 1;
+}
+
+
+.sticky-demo-content {
+    padding: 1rem;
+}
+
+
+.sticky-demo-content .position-item {
+    min-height: 110px;
+    margin-bottom: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ==========================================================
+   14. FIXED POSITIONING
+   ==========================================================
+
+   Fixed positioning removes an element from normal document
+   flow and positions it relative to the VIEWPORT.
+
+   The viewport is the visible browser window.
+
+   This means the element stays in the same place even while
+   the document scrolls.
+
+   Common uses:
+
+   - live chat controls
+   - floating action buttons
+   - back-to-top buttons
+   - persistent help buttons
+
+   This follows the same idea as the .chat element in the
+   Sticky & Fixed Positioning exercise.
+   ========================================================== */
+
+.fixed-demo-placeholder {
+    border: 2px dashed #777;
+    min-height: 180px;
+    padding: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.fixed-item {
+
+    /*
+       The item is attached to the browser viewport,
+       NOT to the <main> element or one specific section.
+    */
+    position: fixed;
+
+
+    /*
+       Keep the element 1rem from the bottom-right corner
+       of the viewport.
+
+       It will remain there while the page scrolls.
+    */
+    bottom: 1rem;
+    right: 1rem;
+
+
+    /*
+       Shape the demo like the round live-chat control
+       from the positioning exercise.
+    */
+    width: 6rem;
+    height: 6rem;
+
+    border: 2px dotted #222;
+    border-radius: 50%;
+
+    background-color: #fff;
+
+
+    /*
+       Flexbox is used INSIDE the fixed element only to center
+       its label. This is a good reminder that Flexbox and
+       positioning can work together.
+    */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+
+
+    /*
+       Keep the fixed control above ordinary page content.
+    */
+    z-index: 10;
+}

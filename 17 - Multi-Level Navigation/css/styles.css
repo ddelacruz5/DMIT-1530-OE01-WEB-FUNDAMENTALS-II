@@ -1,0 +1,22 @@
+/* Global Variables */
+
+:root {
+    --cyan-900: #006064;
+    --cyan-700: #0097a7;
+    --grey-50: #eceff1;
+    --grey-100: #cfd8dc;
+    --grey-900: #263238;
+    --box-shadow: 10px 10px 19px 0px rgba(236, 239, 241, 1);
+}
+
+/* Soft Reset */
+
+body {
+    color: var(--grey-900);
+    font-family: "Open Sans", sans-serif;
+}
+
+
+svg {
+    height: 1.125rem;
+}
