@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Required Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Additional Information -->
+        <meta name="author" content="Your Name | Username on GitHub">
+        <meta name="description" content="This website demonstrates how to minify, title, and style SVGs within the context of a simple single-level navigation.">
+
+        <title>14 - Scalable Vector Graphics (SVGs) and Responsive Navigation</title>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+        <!-- When working with SVGs within an HTML document, make sure to minify them. This strips away 
+         superfluous code, including things like IDs, classes, and more. 
+        
+        There are many online minifiers. We'll use this one today: https://devina.io/svg-minifier
+
+        To use it, copy and paste your SVG. Choose the filters or settings you want. After, 
+        click 'View editor' (a slider on the left-hand side, under settings) to get the minified code. 
+        To minify another SVG, refresh the page.
+    
+        After you minify your SVG, make sure to add a title. This is akin to the
+         alternative text (or alt attribute) that you add to an image, as it aids in accessibility for screen readers. 
+    
+        Why go to all this trouble? If we incorporated our SVGs using <img> tags (which we can!), 
+        we wouldn't be able to style them (add strokes or fills). Just like a JPEG or a WebP, 
+        our browser would treat it as this immutable thing that we can only resize or manipulate 
+        as we would any other image. -->
+        <header>
+            <h1 class="sr-only">Single-Level Navigation</h1>
+            <nav>
+                <h2 class="sr-only">Main Menu</h2>
+                <ul class="menu">
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.4 26.4" xml:space="preserve">
+                                <title>Home</title>
+                                <path d="M3.6 24.3s0 .6.5.6h6.7v-5.5s0-.9.8-.9h2.7c1 0 1 1 1 1v5.4h6.5c.7 0 .7-.8.7-.8v-10l-9.2-8.2-9.7 8.2z" />
+                                <path d="M0 13.3s.8 1.5 2.6 0l10.8-9.1 10.1 9c2.1 1.6 2.9 0 2.9 0l-13-11.7zm23.3-9.1h-2.6v3.1l2.6 2.2z" />
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405.2 405.2" xml:space="preserve">
+                                <title>Articles</title>
+                                <path d="M249 330.6H28.3V87h335.6v181.6l28.3 28.3V26.2c0-13-10.6-23.6-23.6-23.6h-345C10.6 2.6 0 13.2 0 26.2v309.1c0 13 10.6 23.6 23.6 23.6h238.9c-13.1-18.6-13.5-28.3-13.5-28.3m89-288.4c0-4.8 4-8.7 8.7-8.7h8.7c4.8 0 8.7 3.9 8.7 8.7v9.9c0 4.8-3.9 8.7-8.7 8.7h-8.7A8.7 8.7 0 0 1 338 52zm-40.4 0c0-4.8 3.9-8.7 8.7-8.7h8.7c4.8 0 8.7 3.9 8.7 8.7v9.9c0 4.8-4 8.7-8.7 8.7h-8.7a8.7 8.7 0 0 1-8.7-8.7zm-40.5 0c0-4.8 3.9-8.7 8.7-8.7h8.7c4.8 0 8.7 3.9 8.7 8.7v9.9c0 4.8-3.9 8.7-8.7 8.7h-8.7a8.7 8.7 0 0 1-8.7-8.7z" />
+                                <path d="M392.6 322.2 351.4 281a43 43 0 0 0-34-12.5c1-12.1-3.1-24.6-12.4-34l-41.2-41.1a43.3 43.3 0 0 0-61 0l-6.8 6.7a43.3 43.3 0 0 0 0 61l41.2 41.3a43 43 0 0 0 34 12.4 43 43 0 0 0 12.5 34l41.1 41.2a43.3 43.3 0 0 0 61.1 0l6.7-6.7a43.3 43.3 0 0 0 0-61.1m-130.3-48 17 17c-8.7 5.2-20 4-27.6-3.4l-41.1-41.2a22.7 22.7 0 0 1 0-32l6.7-6.6a22.7 22.7 0 0 1 32 0l41.1 41.1a23 23 0 0 1 3.5 27.6l-17-17a10.3 10.3 0 1 0-14.6 14.5M378 368.7l-6.7 6.7a22.7 22.7 0 0 1-32 0l-41.2-41.1a23 23 0 0 1-3.4-27.6l17 17a10.3 10.3 0 1 0 14.6-14.5l-17-17c8.6-5.2 20-4 27.5 3.4l41.2 41.1a22.7 22.7 0 0 1 0 32" />
+                            </svg>
+                            Articles
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" xml:space="preserve">
+                                <title>Books</title>
+                                <path d="M487.5 357.9c2.7-3.1 4.2-16.3-7.8-17.3h-405a74.8 74.8 0 0 0 0 149.4h405c14.2-1.6 10.4-14.4 7.7-17.4-34.9-38.5-34.8-75 0-114.7M458.2 469H74.7a54 54 0 0 1 0-107.7h383.7q-36.2 54.4-.2 107.7M10.3 319.7h405a74.8 74.8 0 0 0 0-149.4H188.7v-20.9h291c14.2-1.6 10.5-14.3 7.7-17.4-34.9-38.5-34.8-75 0-114.7 2.8-3 4.3-16.3-7.7-17.3h-405a74.8 74.8 0 0 0 0 149.4H88v20.9H10.3c-12 1-10.5 14.2-7.8 17.3 35 39.7 35 76.2.1 114.7-2.7 3-6.5 15.8 7.7 17.4m64.4-191.1a54 54 0 0 1 0-107.7h383.7q-36.2 54.3-.2 107.7H188.7V74.7c0-5.7-4.6-10.4-10.4-10.4H98.5C92.7 64.3 88 69 88 74.7v53.9zM168 85v130.3l-23-18a10.5 10.5 0 0 0-13 0l-23 18V85.1zM88 191.1v45.7c-.6 9.1 6.3 18 16.9 8.2l33.5-26.2 33.5 26.2c11 9 17.7.6 16.8-8.2v-45.7h226.6a54 54 0 0 1 0 107.8H31.8q36-53.4-.2-107.8z" />
+                            </svg>
+                            Books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 453 453" xml:space="preserve">
+                                <title>Events</title>
+                                <path d="M404.3 0H48.6A49 49 0 0 0 0 48.7v355.6A49 49 0 0 0 48.6 453h355.7c26.8 0 48.7-22 48.7-48.7V48.7C453 21.9 431 0 404.3 0M148.4 33.6h156V74h-156zM411 406.4H42v-294h369z" />
+                                <path d="M79.3 246.2h48.6v48.7H79.3zm0 77.1h48.6v48.6H79.3zm81.6-154.1h48.6v48.6h-48.6zm0 77h48.6v48.7h-48.6zm0 77.1h48.6v48.6h-48.6zm81.5-154.1h48.7v48.6h-48.7zm0 77h48.7v48.7h-48.7zm0 77.1h48.7v48.6h-48.7zm81.5-154.1h48.7v48.6h-48.7zm0 77h48.7v48.7h-48.7z" />
+                            </svg>
+                            Events
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 178" xml:space="preserve">
+                                <title>Memberships</title>
+                                <path d="M183.9 38.2a16.3 16.3 0 1 0 32.6 0 16.3 16.3 0 0 0-32.6 0m-16.7 54.6V80c0-11.2 9.1-20.4 20.3-20.4h26.7c11.2 0 20.3 9.1 20.3 20.4v12.7zM95.7 2.4V26a38.5 38.5 0 0 0-36.5 23.6L2 175.5h78.8l5-17a64 64 0 0 0 45.5-43.8h.1l.6-2.2h122V2.4zm150.4 102.3H115.4a49 49 0 0 1-29.2 35 4 4 0 1 1-3-7.2 40 40 0 0 0 25.1-35.6v-4h40.4a10.8 10.8 0 0 0 0-21.6H77.8a4 4 0 0 1 0-8h25.8v-53h142.5zM115.4 26h44.1v7.8h-44zm0 19.6h44.1v8h-44z" />
+                            </svg>
+                            Memberships
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" xml:space="preserve">
+                                <title>Newsletter</title>
+                                <path d="M436.4 76.6 367.5 0h-314v490h383zM84.2 459.4V30.6h269.6v60.8h52v368z" />
+                                <path d="M137.9 281.8h214.4v30.6H137.9zm0 53.3h214.4v30.6H137.9zM245 125.3h107.2v30.6H245zm0 53.2h107.2v30.6H245zm-107.1 53.2h214.4v30.6H137.9zm-.1-106.4h83.9v83.9h-83.9z" />
+                            </svg>
+                            Newsletter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 575.8 575.8" xml:space="preserve">
+                                <title>Podcasts</title>
+                                <path d="M326.7 327.8V376a152 152 0 0 0 112.8-146.5c0-83.6-68-151.6-151.6-151.6s-151.6 68-151.6 151.6c0 70.2 48 129.4 112.8 146.5v-48.2a105.8 105.8 0 1 1 144.4-98.3c0 44.6-27.7 82.8-66.8 98.3" />
+                                <path d="M517.4 229.5C517.4 103 414.4 0 287.9 0S58.4 103 58.4 229.5a230 230 0 0 0 190.7 226.1V409a184 184 0 0 1-144.8-179.4A184 184 0 0 1 287.9 45.9a184 184 0 0 1 183.6 183.6c0 88-62.2 161.6-144.8 179.4v46.7a230 230 0 0 0 190.7-226.1" />
+                                <path d="M264.4 379.2v196.6h47V300.6a75 75 0 0 0 15.3-7 75 75 0 1 0-62.3 7zM260 221.8q1-4.1 3.3-7.6a29 29 0 1 1-3.3 7.6" />
+                            </svg>
+                            Podcasts
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+
+</html>

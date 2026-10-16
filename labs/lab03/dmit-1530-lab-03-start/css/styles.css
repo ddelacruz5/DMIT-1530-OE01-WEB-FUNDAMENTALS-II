@@ -1,0 +1,84 @@
+
+/* Do not modify this file - Changes here not be graded. */
+
+/* Variables */
+:root {
+    --accent: #0e7490;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --rose-700: #be123c;
+    --slate-50: #f8fafc;
+    --slate-200: #e2e8f0;
+    --slate-800: #1e293b;
+}
+
+body {
+    color: var(--slate-800);
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.25rem;
+}
+
+h1 {
+    font-size: 1.65rem;
+    font-weight: normal;
+}
+
+header {
+    background-color: var(--slate-50);
+    border-bottom: 1px solid var(--slate-200);
+    box-shadow: var(--box-shadow);
+    padding: 0.5rem;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+header a:hover {
+    color: var(--rose-700);
+}
+nav {
+    display: flex;
+    gap: 2rem;    
+}
+.side a {
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    padding: .5rem;
+    width: 50px;
+}
+.sides a:hover {
+    background-color: var(--slate-200);
+    border-color: var(--rose-700);
+}
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+article {
+    margin-bottom: 2rem;
+    border: 1px solid var(--slate-200);
+    box-shadow: var(--box-shadow);
+}
+article p {
+    padding: .5rem 1rem;
+}
+article img + h2 {
+    background-color: var(--slate-800);
+    color: var(--slate-200);
+}
+footer {
+    background-color: var(--accent);
+    color: var(--slate-50);
+    padding: 2rem; 
+}
+footer a {
+    background-color: var(--rose-700);
+    color: var(--slate-200);
+    padding: .25rem .5rem;
+    border-radius: 6px;
+}
+/* end of file that you are not allowed to edit */
