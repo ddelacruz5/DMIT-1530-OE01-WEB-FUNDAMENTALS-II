@@ -1,0 +1,11 @@
+:root {
+    --accent: #639187;
+    --black: #141208;
+    --hover: #f1f5f9;
+    --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+body {
+    color: var(--black);
+    font-family: 'Work Sans', sans-serif;
+}
