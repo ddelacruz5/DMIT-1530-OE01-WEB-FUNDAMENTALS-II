@@ -1,0 +1,153 @@
+:root {
+    --material-blue: rgb(26, 115, 232);
+    --form-bg: #f1f1f1;
+    --black: #121212;
+}
+
+/* Universal Styles */
+
+body {
+    color: var(--black);
+    font-family: 'Roboto', sans-serif;
+}
+
+.inner-container {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.sr-only{
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
+}
+
+/*Typography*/
+h2, h3, legend, label[for="submit"] {
+    font-weight: 100;
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+legend, label[for="submit"] {
+    font-size: 1.75rem;
+    margin: 1rem 0;
+}
+
+/*Header*/
+header {
+    background-color: var(--material-blue);
+    box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, .3), 0px 1px 3px 1px rgba(60,64,67,.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header .inner-container,
+header ul {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+header ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header svg {
+    width: 2rem;
+}
+
+header svg path {
+    fill: white;
+}
+
+/*Main Styles*/
+
+main {
+    padding: 1rem;
+}
+
+.intro {
+    margin: 3rem 0 4rem 0;
+}
+
+.intro h2 {
+    margin-bottom: 1rem;
+}
+
+.intro p {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/*Form style*/
+
+main form {
+    background-color: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(60,64,67,.3);
+    padding: 2rem;
+}
+
+fieldset {
+    border: none;
+    color: #666;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+/* The > is a the child combinator symbol. it is used to target only the direct children of a specified parent element. */
+fieldset > div {
+    margin-bottom: 1.125rem;
+}
+
+/*The css negation pseudo class allows you to apply rules globally to the form elemt while excluding specific input types, classes, or states*/
+form input:not([type="radio"], [type="checkbox"], [type="submit"]),
+select,
+textarea {
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    height: 2.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+form input:not([type="radio"], [type="checkbox"], [type="submit"]) {
+    box-shadow: insert - 1px 2px rgba(60,64,67,.15);
+}
+
+form textarea {
+    max-height: 16rem;
+    min-height: 5rem;
+    resize: vertical;
+}
+
+p.help {
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+    opacity: .65;
+}
+
+form label:not(input[type="radio"] + label, input[type="checkbox"] + label) {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form > div:last-of-type {
+    margin-top: 4rem;
+}
