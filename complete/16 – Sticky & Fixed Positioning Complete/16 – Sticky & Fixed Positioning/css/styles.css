@@ -1,0 +1,174 @@
+body {
+    color: #333;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* UTILITY CLASSES */
+
+.container {
+    margin: auto;
+    max-width: 1280px;
+}
+
+.wide-flex {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+}
+
+/* HEADER */
+
+header {
+    background: #3DB39E;
+    color: white;
+    font-family: 'Signika', sans-serif;
+    padding: 1rem;
+    /* Vendor prefixes help make experimental
+       properties and features compatible with
+       browsers where support may be iffy. */
+    position: -webkit-sticky;
+    position: sticky;
+    /* Without a helper property, the sticky
+       poisiton won't work. */
+    top: 0;
+    /* This helps keep the header in front. */
+    z-index: 1;
+}
+
+header .container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+header svg {
+    width: 3rem;
+}
+
+header svg path {
+    fill: white;
+}
+
+/* MAIN LAYOUT */
+
+main {
+    padding: 2rem;
+}
+
+main section h2 {
+    font-family: 'Signika', sans-serif;
+    font-size: 5rem;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.card {
+    background-color: #f6f4f0;
+    border: 1px solid #e8e4dc;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    /* While this won't move the container, it
+       will allow us to absolutely position the
+       elements inside of it, relative to where
+       this <div> is in the layout. */
+    position: relative;
+}
+
+h3 {
+    line-height: 2;
+    margin-top: 1rem;
+}
+
+p {
+    margin: 1rem 0;
+}
+
+.sale, 
+.new {
+    position: absolute;
+    width: 4rem;
+}
+
+.sale {
+    right: 2rem;
+    top: 2rem;
+}
+
+.new {
+    left: 2rem;
+    top: 2rem;
+}
+
+.price {
+    color: #dc6419;
+    font-weight: 600;
+}
+
+.price span {
+    color: #666;
+    text-decoration: line-through;
+}
+
+a {
+    background-color: #3DB39E;
+    border-radius: 0.4rem;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 80%;
+}
+
+a:hover,
+a:focus {
+    background-color: #349f8c;
+    text-decoration: underline;
+}
+
+.chat {
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px dotted #3DB39E;
+    cursor: pointer;
+    height: 6rem;
+    padding: 1rem 1rem;
+    width: 6rem;
+    /* This will put the chat icon in the 
+       lower right-hand corner of the body,
+       no matter what the viewport does. */
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.chat img {
+    margin: auto;
+    width: 3rem;
+}
+
+.chat p {
+    font-size: 0.6rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 1070px) {
+
+    .wide-flex {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    main .wide-flex > div {
+        width: calc((100% / 3) - (2rem / 3));
+    }
+}

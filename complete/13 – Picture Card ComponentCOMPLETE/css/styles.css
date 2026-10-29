@@ -1,0 +1,530 @@
+/* =========================================================
+   ROOT / CSS VARIABLES
+   ========================================================= */
+
+/*
+    :root represents the highest-level element in the document
+    (essentially the <html> element).
+
+    CSS custom properties (variables) are defined here so that
+    commonly used values can be reused throughout the stylesheet.
+
+    Variables are especially useful for colours, fonts, spacing,
+    and other values that appear repeatedly.
+
+    To use a variable:
+    var(--variable-name)
+*/
+:root {
+    /* 
+        Font shorthand:
+        2em = font-size
+        1.5 = line-height
+        'Nunito' = preferred font
+        'Helvetica Neue' and sans-serif = fallback fonts
+    */
+    --nunito: 2em/1.5 'Nunito', 'Helvetica Neue', sans-serif;
+
+    /* 1rem font-size with a line-height of 1.5 */
+    --open-sans: 1rem/1.5 'Open Sans', sans-serif;
+
+    /*
+        Reusable box shadow.
+        rgb(33 33 33 / 15%) means the colour has 15% opacity,
+        creating a subtle shadow instead of a harsh one.
+    */
+    --box-shadow: 0 0 10px 0 rgb(33 33 33 / 15%);
+
+    /* Reusable site colours */
+    --black: #212121;
+    --red: #c0232a;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+body {
+    /* Uses the black colour defined in :root */
+    color: var(--black);
+
+    /* Uses our Open Sans font variable */
+    font: var(--open-sans);
+
+    /*
+        vh = viewport height.
+        100vh means the body will be AT LEAST as tall
+        as the browser window.
+    */
+    min-height: 100vh;
+
+    /*
+        Prevents content from creating a horizontal scrollbar
+        if something accidentally extends beyond the viewport.
+    */
+    overflow-x: hidden;
+}
+
+
+/*
+    Because h1 and h2 share several styles,
+    we can group the selectors together rather than
+    repeating the same CSS twice.
+*/
+h1,
+h2 {
+    /* Use our Nunito heading font */
+    font: var(--nunito);
+
+    /* Adds space underneath each heading */
+    margin-bottom: 1rem;
+
+    /* Displays heading text in uppercase */
+    text-transform: uppercase;
+}
+
+
+/* Only the h1 receives the red colour */
+h1 {
+    color: var(--red);
+}
+
+
+/*
+    The h2 inherits the heading font above,
+    but we override its font-size so it is smaller than the h1.
+*/
+h2 {
+    font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   UTILITY CLASSES
+   ========================================================= */
+
+/*
+    Utility classes are reusable classes that can be applied
+    to many different elements throughout the website.
+*/
+
+
+/* ---------- BUTTON ---------- */
+
+.btn {
+    /* Default button background */
+    background-color: var(--black);
+
+    /* Slightly rounds the corners */
+    border-radius: 3px;
+
+    /* White text */
+    color: #fff;
+
+    /*
+        Changes the mouse cursor to the "hand" icon,
+        helping indicate that this element is clickable.
+    */
+    cursor: pointer;
+
+    /*
+        <a> elements are inline by default.
+        display: block allows us to control width and margins
+        more like a normal block-level element.
+    */
+    display: block;
+
+    /*
+        Padding adds space INSIDE the button.
+        0.5rem = top/bottom
+        1rem   = left/right
+    */
+    padding: 0.5rem 1rem;
+
+    /*
+        Margin:
+        top    = 1rem
+        right  = auto
+        bottom = 0
+        left   = auto
+
+        The auto left/right margins center the block horizontally
+        because the button has a defined width.
+    */
+    margin: 1rem auto 0rem auto;
+
+    /* Centers the text inside the button */
+    text-align: center;
+
+    /* Removes the underline if this is an <a> element */
+    text-decoration: none;
+
+    /* Displays button text in uppercase */
+    text-transform: uppercase;
+
+    /*
+        Smoothly animates property changes over 0.5 seconds.
+
+        This makes the background colour change on :hover
+        rather than changing instantly.
+    */
+    transition: all 0.5s ease;
+
+    /* Gives every button a consistent width */
+    width: 12rem;
+}
+
+
+/*
+    :hover applies when the user's mouse is positioned
+    over the element.
+*/
+.btn:hover {
+    /* Changes from black to red */
+    background-color: var(--red);
+}
+
+
+/* ---------- FLEX CONTAINER ---------- */
+
+.flex-container {
+    /*
+        Turns this element into a FLEX CONTAINER.
+
+        Its direct children now become FLEX ITEMS.
+
+        Remember:
+        display: flex affects the CHILDREN of this element,
+        not the element itself.
+    */
+    display: flex;
+
+    /*
+        align-items controls alignment on the CROSS AXIS.
+
+        With the default flex-direction: row:
+        Main Axis  = horizontal
+        Cross Axis = vertical
+
+        Therefore, center vertically aligns the flex items here.
+    */
+    align-items: center;
+
+    /*
+        justify-content controls alignment on the MAIN AXIS.
+
+        space-between pushes the first item to the start,
+        the last item to the end, and distributes the remaining
+        space between the items.
+    */
+    justify-content: space-between;
+}
+
+
+/* ---------- INNER CONTAINER ---------- */
+
+.inner-container {
+    /*
+        Prevents the content from becoming wider than 1280px
+        on very large monitors.
+    */
+    max-width: 1280px;
+
+    /*
+        Auto left/right margins center a block element
+        when it has a max-width or width.
+    */
+    margin: auto;
+
+    /* Keeps content away from the edges of the container */
+    padding: 1rem;
+}
+
+
+/* ---------- WIDE FLEX CONTAINER ---------- */
+
+.wide-flex {
+    /* Makes this another flex container */
+    display: flex;
+
+    /*
+        flex-flow is shorthand for:
+
+        flex-direction
+        flex-wrap
+
+        column = stack flex items vertically
+        wrap   = allow items to wrap if necessary
+
+        This is our MOBILE-FIRST layout.
+    */
+    flex-flow: column wrap;
+
+    /*
+        gap adds consistent spacing BETWEEN flex items.
+
+        Unlike margins, gap only adds space between the items
+        and does not add extra space around the outside.
+    */
+    gap: 1.5rem;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.info {
+    /* Centers the block horizontally */
+    margin: auto;
+
+    /* Adds vertical space inside the section */
+    padding: 2rem 0;
+
+    /* Centers text inside the section */
+    text-align: center;
+}
+
+
+.info p {
+    /*
+        em is relative to the current element's font size.
+        This makes the paragraph slightly larger than normal.
+    */
+    font-size: 1.2em;
+
+    /* Centers the paragraph within its container */
+    margin: auto;
+
+    /*
+        ch is approximately the width of the "0" character.
+
+        Using ch for paragraphs is useful because it controls
+        line length based roughly on characters instead of pixels.
+
+        Limiting line length improves readability.
+    */
+    max-width: 60ch;
+}
+
+
+/* ---------- CARDS ---------- */
+
+.card {
+    /*
+        Creates a subtle border around each card.
+
+        The / 15% syntax makes the colour partially transparent.
+    */
+    border: 1px solid rgb(33 33 33 / 15%);
+
+    /* Rounds all four corners */
+    border-radius: 5px;
+
+    /* Uses the reusable shadow created in :root */
+    box-shadow: var(--box-shadow);
+}
+
+
+/*
+    The <picture> element acts as a container for responsive images.
+
+    In the smaller layout, the image takes up a maximum
+    of 40% of the card's available width.
+*/
+.card picture {
+    max-width: 40%;
+}
+
+
+/*
+    IMPORTANT:
+
+    If we target the <picture> element to round the image corners,
+    we may not actually see the result.
+
+    <picture> is essentially a wrapper used to provide different
+    image sources.
+
+    The actual visible image is the <img>, so we need to target
+    the elements inside the picture.
+*/
+.card source,
+.card img {
+    /*
+        Round:
+        top-left     = 5px
+        top-right    = 0
+        bottom-right = 0
+        bottom-left  = 5px
+
+        This works because the image appears on the LEFT side
+        of the card in the smaller layout.
+    */
+    border-radius: 5px 0 0 5px;
+}
+
+
+/* ---------- CARD CONTENT ---------- */
+
+.card-body {
+    /* Adds breathing room around the text */
+    padding: 1rem;
+
+    /*
+        The picture uses up to 40% of the card.
+        The body uses up to 60%.
+
+        40% + 60% = 100%
+
+        This allows the image and text to sit beside one another.
+    */
+    max-width: 60%;
+}
+
+
+/* =========================================================
+   MEDIA QUERY
+   ========================================================= */
+
+/*
+    This media query activates when the viewport is
+    AT LEAST 890px wide.
+
+    Because the CSS above represents our smaller/mobile layout,
+    we only need to change the properties necessary for
+    the larger layout.
+
+    This is called MOBILE-FIRST responsive design.
+*/
+@media screen and (min-width: 890px) {
+
+    .wide-flex {
+        /*
+            Change the flex direction from COLUMN to ROW.
+
+            BEFORE 890px:
+            Card
+            Card
+            Card
+
+            AFTER 890px:
+            Card | Card | Card
+
+            wrap still allows items to move onto another row
+            if there isn't enough room.
+        */
+        flex-flow: row wrap;
+    }
+
+
+    .info {
+        /*
+            .info is also a flex item inside .wide-flex.
+
+            Giving it 100% width forces it to take up an
+            entire row by itself.
+        */
+        width: 100%;
+    }
+
+
+    /*
+        This selector targets an element that has BOTH classes:
+
+        class="card flex-container"
+
+        It does NOT mean a .flex-container inside of .card.
+    */
+    .card.flex-container {
+        /*
+            Earlier, .flex-container used the default direction:
+            flex-direction: row;
+
+            Here we change the direction so the contents of
+            each card stack vertically.
+
+            Image
+            -----
+            Text
+            Button
+        */
+        flex-direction: column;
+    }
+
+
+    /*
+        We want THREE cards across the row.
+
+        100% / 3 gives each card roughly one-third of the container.
+
+        However, there are also gaps between the cards.
+
+        Three cards create TWO gaps:
+
+        Card | GAP | Card | GAP | Card
+
+        Each gap = 1.5rem
+
+        1.5rem × 2 = 3rem total gap space
+
+        We subtract that gap space when calculating the card width
+        so all three cards can fit on the same row.
+    */
+    .card {
+        width: calc((100% / 3) - (3rem / 3));
+    }
+
+
+    /*
+        In the smaller layout:
+
+        picture   = max-width: 40%
+        card-body = max-width: 60%
+
+        That made sense when they were SIDE-BY-SIDE.
+
+        Now that the card contents stack vertically,
+        both can use the full width of the card.
+    */
+    .card picture,
+    .card-body {
+        max-width: 100%;
+    }
+
+
+    /*
+        The image is now at the TOP of the card rather than
+        on the LEFT.
+
+        Therefore, we need to change which corners are rounded.
+
+        top-left     = 5px
+        top-right    = 5px
+        bottom-right = 0
+        bottom-left  = 0
+    */
+    .card source,
+    .card img {
+        border-radius: 5px 5px 0 0;
+    }
+
+
+    /*
+        On larger screens we have more available space,
+        so we increase the padding around the card content.
+    */
+    .card-body {
+        padding: 2rem;
+    }
+
+
+    /*
+        Adds some extra separation between the card content
+        and the button in the larger layout.
+    */
+    .btn {
+        margin-top: 2rem;
+    }
+}
